@@ -3,14 +3,14 @@ import { useRouter } from 'expo-router'
 import { useEffect } from 'react'
 import { Image, StyleSheet, Text, View } from 'react-native'
 const index = () => {
-    const router = useRouter()
+    // const router = useRouter()
 
-    useEffect(() => {
-      setTimeout(() => {
-        router.push('/welcome')
-      }, 2000)
+    // useEffect(() => {
+    //   setTimeout(() => {
+    //     router.push('/welcome')
+    //   }, 2000)
     
-    }, [])
+    // }, [])
     
   return (
     <View style={styles.container}>

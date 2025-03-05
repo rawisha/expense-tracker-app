@@ -9,19 +9,24 @@ import * as Icons from "phosphor-react-native";
 import { useRef, useState } from "react";
 import Button from "@/components/Button";
 import { useRouter } from "expo-router";
+import { useAuth } from "@/contexts/authContext";
 const Login = () => {
     const [isLoading, setIsLoading] = useState(false)
   const emailRef = useRef("");
   const passwordRef = useRef("");
   const router = useRouter()
+  const {login: loginUser} = useAuth()
 
   const handleSubmit = async () => {
     if(!emailRef.current || !passwordRef.current){
         Alert.alert('Login', "Please fill all the fields")
     }
-    console.log("email: ", emailRef.current)
-    console.log("password: ", passwordRef.current)
-    console.log("good to go")
+    setIsLoading(true)
+    const res = await loginUser(emailRef.current, passwordRef.current)
+    setIsLoading(false)
+    if(!res.success){
+      Alert.alert("Login", res.msg)
+    }
   }
   return (
     <ScreenWrapper>
